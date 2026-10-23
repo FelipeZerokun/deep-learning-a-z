@@ -24,3 +24,19 @@ dist/
 # Operating system files
 .DS_Store
 Thumbs.db
+
+# Original course materials at the repository root
+/Codes/
+/dataset/
+
+# Local datasets within projects
+**/data/**
+**/dataset/**
+
+# Preserve dataset documentation
+!**/data/README.md
+!**/dataset/README.md
+
+# Generated outputs within projects
+**/artifacts/
+**/outputs/
