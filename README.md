@@ -50,6 +50,17 @@ pull requests, and GitHub Actions to practice coordinated development.
 Each project's README defines its specific scope, execution
 instructions, evaluation, and limitations.
 
+## Current Progress
+
+The collection and initial project structures are defined. ANN has a
+configured Python environment and local development tools; its model
+workflow and tests have not yet been implemented. The other projects
+remain planned with initial scaffolding.
+
+Start with the [ANN development setup](01_ANN/README.md#development-setup).
+Run environment and quality-check commands from the relevant project
+directory. There is no shared root Python environment.
+
 ## Repository Strategy
 
 This is a monorepo: one Git repository containing seven

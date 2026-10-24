@@ -17,6 +17,7 @@ a neural network, and returns a churn probability for an individual
 customer.
 
 The target variable is `Exited`:
+
 - `0`: The customer did not leave the bank.
 - `1`: The customer left the bank.
 
@@ -88,4 +89,68 @@ decision system.
 
 ## Project Status
 
-Project definition. Implementation has not started.
+The Python environment and development tools are configured. The
+`bank_churn` package is importable, but preprocessing, model training,
+evaluation, and prediction have not been implemented. TensorFlow and
+other runtime dependencies have not yet been added.
+
+## Development Setup
+
+Prerequisite: [uv](https://docs.astral.sh/uv/getting-started/installation/)
+installed. The project uses Python 3.12, with Python 3.12.13 selected in
+`.python-version`.
+
+From the repository root:
+
+```sh
+cd 01_ANN
+uv sync --locked
+```
+
+Run subsequent commands from `01_ANN`. uv creates a local `.venv` and
+installs the project and development dependencies from `uv.lock`.
+`--locked` checks that the lockfile matches the project configuration
+without updating it. If needed, uv can download the selected Python version.
+
+Use `uv run` to execute commands in this environment; manual activation
+is not required.
+
+### Verify the Environment
+
+```sh
+uv run python --version
+uv run python -c "import bank_churn; print(bank_churn.__file__)"
+```
+
+Expect Python 3.12.13 and a path ending in `src/bank_churn/__init__.py`.
+
+### Quality Checks
+
+```sh
+uv run ruff check .
+uv run ruff format --check .
+uv run mypy
+uv run pytest
+```
+
+- Ruff checks code and formatting; notebooks are excluded.
+- mypy checks `src` with strict typing enabled.
+- pytest discovers tests under `tests`.
+
+There are currently no tests. pytest reports `no tests ran` and exits
+with code 5. This is expected during initial setup, not a passing test
+suite. Meaningful tests will be added alongside implementation.
+
+To apply formatting, run `uv run ruff format .` and review the changes.
+
+### Configuration Files
+
+| File | Purpose |
+|---|---|
+| `pyproject.toml` | Package metadata, dependencies, and tool configuration |
+| `.python-version` | Selected Python version |
+| `uv.lock` | Resolved dependency versions |
+| `src/bank_churn/__init__.py` | Initial importable package |
+
+Commit these files to Git. Keep `.venv`, caches, and local datasets
+excluded according to the root `.gitignore`.
